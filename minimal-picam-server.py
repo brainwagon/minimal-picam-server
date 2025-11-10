@@ -22,7 +22,35 @@ camera.start()
 
 @app.route('/')
 def index():
-    return '<h1>PiCamera2 Image Server</h1><p>Visit <a href="/snapshot">/image.jpg</a> to get a still frame, or <a href="/stream">/stream</a> to get a motion JPEG stream.</p>'
+    html = """
+    <html>
+    <head>
+        <title>PiCamera2 Image Server</title>
+        <style>
+            body { font-family: sans-serif; text-align: center; padding: 2em; }
+            img { max-width: 100%; height: auto; border: 1px solid #ccc; }
+            .endpoints { margin-top: 2em; }
+            .endpoints a { display: block; margin: 0.5em; }
+        </style>
+    </head>
+    <body>
+        <h1>PiCamera2 Image Server</h1>
+        <p>This server provides a live feed from a Raspberry Pi camera.</p>
+        
+        <h2>Live Snapshot</h2>
+        <p>The image below is a single frame captured from the camera. Refresh the page to get a new one.</p>
+        <img src="/snapshot" alt="Live Snapshot from PiCamera">
+        
+        <div class="endpoints">
+            <h2>Available Endpoints</h2>
+            <p>You can also access the raw streams directly:</p>
+            <a href="/snapshot">/snapshot</a> - A single JPEG image.<br>
+            <a href="/stream">/stream</a> - A Motion JPEG (mjpeg) stream.
+        </div>
+    </body>
+    </html>
+    """
+    return html
 
 @app.route('/snapshot')
 def serve_image():
