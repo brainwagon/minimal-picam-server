@@ -27,8 +27,9 @@ def index():
     <head>
         <title>PiCamera2 Image Server</title>
         <style>
-            body { font-family: sans-serif; text-align: center; padding: 2em; }
-            img { max-width: 100%; height: auto; border: 1px solid #ccc; }
+            body { font-family: sans-serif; text-align: center; padding: 2em; background-color: #333; color: #eee; }
+            img { max-width: 100%; height: auto; border: 1px solid #555; }
+            a { color: #8af; }
             .endpoints { margin-top: 2em; }
             .endpoints a { display: block; margin: 0.5em; }
         </style>
